@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block titulo %}
+    Eliminacion de Roles
+{% endblock titulo %}
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<form method="POST">
+    {% csrf_token %}
+    <h2>¿Desea eliminar el registro {{ rol.nombre }}?</h2>
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'calendario:listar_rol' %}">Cancelar</a>
+</form>
+{% endblock body %}

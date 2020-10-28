@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block titulo %}
+    Listado de Roles
+{% endblock titulo %}
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% if roles %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rol in roles %}
+                    <tr>
+                        <td>{{ rol.id }}</td>
+                        <td>{{ rol.nombre }}</td>
+                        <td>
+                            <a href="{% url 'calendario:editar_rol' rol.id %}">Editar</a>
+                            <a href="{% url 'calendario:eliminar_rol' rol.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>No existen roles registrados</h1>
+    {% endif %}
+{% endblock body %}
