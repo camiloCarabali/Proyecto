@@ -17,6 +17,7 @@ class Login(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField('Username', max_length=200, blank=False, null=False)
     password = models.CharField('Password', max_length=200, blank=False, null=False)
+    estado = models.BooleanField('Estado', default=True)
 
     class Meta:
         verbose_name = 'Login'
@@ -33,6 +34,7 @@ class Usuario(models.Model):
     apellidos = models.CharField(max_length=200, blank=False, null=False)
     login_id = models.ForeignKey(Login, on_delete=models.CASCADE)
     rol_id = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    estado = models.BooleanField('Estado', default=True)
 
     class Meta:
         verbose_name = 'Usuario'
@@ -49,6 +51,7 @@ class Actividades(models.Model):
     horaFinal = models.TimeField('horaFinal', blank=False, null=False)
     descripcion = models.TextField(blank=False, null=False)
     usuario_id = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    estado = models.BooleanField('Estado', default=True)
 
     class Meta:
         verbose_name = 'Actividad'

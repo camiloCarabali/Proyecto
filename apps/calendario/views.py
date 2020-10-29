@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import RolForm
 from .forms import LoginForm
+from .forms import UsuarioForm
 from .models import Rol
+from .models import Usuario
 
 def Home(request):
     return render(request, 'index.html')
@@ -55,3 +57,14 @@ def crearLogin(request):
     else:
         login_form = LoginForm()
     return render(request, 'calendario/crear_login.html', {'login_form':login_form})
+
+def crearUsuario(request):
+    if request.method == 'POST':
+        print(request.POST)
+        usuario_form = UsuarioForm(request.POST)
+        if usuario_form.is_valid():
+            usuario_form.save()
+            return redirect('index')
+    else:
+        usuario_form = UsuarioForm()
+    return render(request, 'calendario/crear_usuario.html', {'usuario_form':usuario_form})
