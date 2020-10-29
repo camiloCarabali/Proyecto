@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+    listado Login
+{% endblock titulo %}
+
+{% block body %}
+
+    {% if autores %}
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Contrasena</th>
+                <th>Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for login in login %}
+                    <tr>
+                        <td>{{ login.id }}</td>
+                        <td>{{ login.usuario}}</td>
+                        <td>{{ login.contrasena }}</td>
+                        <td>
+                            <a href="{% url 'calendario:editar_autor' login.id %}">Editar</a>
+                            <a href="{% url 'calendario:eliminar_autor' login.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1> No exiten registros de Login</h1>
+
+{% endblock body %}
