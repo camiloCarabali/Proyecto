@@ -44,7 +44,7 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nombres
 
-class Actividades(models.Model):
+class Actividad(models.Model):
     id = models.AutoField(primary_key=True)
     fecha = models.DateField('Fecha', blank=False, null=False)
     horaInicial = models.TimeField('horaInicial', blank=False, null=False)

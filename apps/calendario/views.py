@@ -3,8 +3,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from .forms import RolForm
 from .forms import LoginForm
 from .forms import UsuarioForm
+from .forms import ActividadForm
 from .models import Rol
 from .models import Usuario
+from .models import Actividad
 
 def Home(request):
     return render(request, 'index.html')
@@ -42,10 +44,11 @@ def editarRol(request, id):
 
 def eliminarRol(request, id):
     rol = Rol.objects.get(id = id)
-    rol.estado = False
-    rol.save()
-    return redirect('calendario:listar_rol')
-
+    if request.method == 'POST':
+        rol.estado = False
+        rol.save()
+        return redirect('calendario:listar_rol')
+    return render(request, 'calendario/eliminar_rol.html', {'rol':rol})
 
 def crearLogin(request):
     if request.method == 'POST':
@@ -68,3 +71,70 @@ def crearUsuario(request):
     else:
         usuario_form = UsuarioForm()
     return render(request, 'calendario/crear_usuario.html', {'usuario_form':usuario_form})
+
+def listarUsuario(request):
+    usuarios = Usuario.objects.filter(estado = True)
+    return render(request, 'calendario/listar_usuario.html', {'usuarios': usuarios})
+
+def editarUsuario(request, id):
+    usuario_form = None
+    error = None
+    try:
+        usuario = Usuario.objects.get(id=id)
+        if request.method == 'GET':
+            usuario_form = UsuarioForm(instance=usuario)
+        else:
+            usuario_form = UsuarioForm(request.POST, instance=usuario)
+            if usuario_form.is_valid():
+                usuario_form.save()
+            return redirect('index')
+    except ObjectDoesNotExist as e:
+        error = e
+    return render(request, 'calendario/crear_usuario.html', {'usuario_form': usuario_form, 'error': error})
+
+def eliminarUsuario(request, id):
+    usuario = Usuario.objects.get(id=id)
+    if request.method == 'POST':
+        usuario.estado = False
+        usuario.save()
+        return redirect('calendario:listar_usuario')
+    return render(request, 'calendario/eliminar_usuario.html', {'usuario':usuario})
+
+def crearActividad(request):
+    if request.method == 'POST':
+        print(request.POST)
+        actividad_form = ActividadForm(request.POST)
+        if actividad_form.is_valid():
+            actividad_form.save()
+            return redirect('index')
+    else:
+        actividad_form = ActividadForm()
+    return render(request, 'calendario/crear_actividad.html', {'actividad_form':actividad_form})
+
+def listarActividad(request):
+    actividades = Actividad.objects.filter(estado = True)
+    return render(request, 'calendario/listar_actividad.html', {'actividades': actividades})
+
+def editarActividad(request, id):
+    actividad_form = None
+    error = None
+    try:
+        actividad = Actividad.objects.get(id=id)
+        if request.method == 'GET':
+            actividad_form = ActividadForm(instance=actividad)
+        else:
+            actividad_form = ActividadForm(request.POST, instance=actividad)
+            if actividad_form.is_valid():
+                actividad_form.save()
+            return redirect('index')
+    except ObjectDoesNotExist as e:
+        error = e
+    return render(request, 'calendario/crear_actividad.html', {'actividad_form': actividad_form, 'error': error})
+
+def eliminarActividad(request, id):
+    actividad =Actividad.objects.get(id=id)
+    if request.method == 'POST':
+        actividad.estado = False
+        actividad.save()
+        return redirect('calendario:listar_actividad')
+    return render(request, 'calendario/eliminar_actividad.html', {'actividad': actividad})
