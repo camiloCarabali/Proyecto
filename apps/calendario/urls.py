@@ -1,33 +1,27 @@
 from django.urls import path
-from .views import crearRol, listarRol, editarRol, eliminarRol
-<<<<<<< HEAD
-from .views import crearLogin, listarLogin, editarLogin, eliminarLogin
-=======
-from .views import crearLogin,listarLogin, editarLogin, eliminarLogin
->>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
-from .views import crearUsuario, listarUsuario, editarUsuario, eliminarUsuario
-from .views import crearActividad, listarActividad, editarActividad, eliminarActividad
+from .views import Home
+#from .views import crearRol, listarRol, editarRol, eliminarRol
+#from .views import crearLogin,listarLogin, editarLogin, eliminarLogin
+#from .views import crearUsuario, listarUsuario, editarUsuario, eliminarUsuario
+#from .views import crearActividad, listarActividad, editarActividad, eliminarActividad
 urlpatterns = [
-    path('crear_rol/', crearRol, name = 'crear_rol'),
-    path('listar_rol/', listarRol, name = 'listar_rol'),
-    path('editar_rol/<int:id>', editarRol, name = 'editar_rol'),
-    path('eliminar_rol/<int:id>', eliminarRol, name = 'eliminar_rol'),
-    path('crear_login/', crearLogin, name = 'crear_login'),
-<<<<<<< HEAD
-    path('listar_login/', listarLogin, name = 'listar_login'),
-    path('editar_login/<int:id>', editarLogin, name = 'editar_login'),
-    path('eliminar_login/<int:id>', eliminarLogin, name = 'eliminar_login'),
-=======
-    path('listar_login/',listarLogin, name = 'listar_login'),
-    path('editar_login/<int:id>', editarLogin, name = 'editar_login'),
-    path('eliminar_login/<int:id', eliminarLogin, name = 'eliminar_login'),
->>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
-    path('crear_usuario/', crearUsuario, name = 'crear_usuario'),
-    path('listar_usuario/', listarUsuario, name='listar_usuario'),
-    path('editar_usuario/<int:id>', editarUsuario, name='editar_usuario'),
-    path('eliminar_usuario/<int:id>', eliminarUsuario, name='eliminar_usuario'),
-    path('crear_actividad/', crearActividad, name='crear_actividad'),
-    path('listar_actividad/', listarActividad, name='listar_actividad'),
-    path('editar_actividad/<int:id>', editarActividad, name='editar_actividad'),
-    path('eliminar_actividad/<int:id>', eliminarActividad, name='eliminar_actividad')
+    path('', Home, name = 'index2'),
+
+    #path('crear_rol/', crearRol, name = 'crear_rol'),
+    #path('listar_rol/', listarRol, name = 'listar_rol'),
+    #path('editar_rol/<int:id>', editarRol, name = 'editar_rol'),
+    #path('eliminar_rol/<int:id>', eliminarRol, name = 'eliminar_rol'),
+    #path('crear_login/', crearLogin, name = 'crear_login'),
+    #path('listar_login/', listarLogin, name = 'listar_login'),
+    #path('editar_login/<int:id>', editarLogin, name = 'editar_login'),
+    #path('eliminar_login/<int:id>', eliminarLogin, name = 'eliminar_login'),
+    #path('crear_usuario/', crearUsuario, name = 'crear_usuario'),
+    #path('listar_usuario/', listarUsuario, name='listar_usuario'),
+    #path('editar_usuario/<int:id>', editarUsuario, name='editar_usuario'),
+    #path('eliminar_usuario/<int:id>', eliminarUsuario, name='eliminar_usuario'),
+    #path('crear_actividad/', crearActividad, name='crear_actividad'),
+    #path('listar_actividad/', listarActividad, name='listar_actividad'),
+    #path('editar_actividad/<int:id>', editarActividad, name='editar_actividad'),
+    #path('eliminar_actividad/<int:id>', eliminarActividad, name='eliminar_actividad')
+
 ]
