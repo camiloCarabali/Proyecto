@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% block titulo %}
+    Listado de Logins
+{% endblock titulo %}
+{% block body %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% if logins %}
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for login in logins %}
+                    <tr>
+                        <td>{{ login.id }}</td>
+                        <td>{{ login.username }}</td>
+                        <td>{{ login.password }}</td>
+                        <td>
+                            <a href="{% url 'calendario:editar_login' login.id %}">Editar</a>
+                            <a href="{% url 'calendario:eliminar_login' login.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>No existen logins registrados</h1>
+    {% endif %}
+{% endblock body %}

@@ -5,6 +5,7 @@ from .forms import LoginForm
 from .forms import UsuarioForm
 from .forms import ActividadForm
 from .models import Rol
+from .models import Login
 from .models import Usuario
 from .models import Actividad
 
@@ -60,6 +61,35 @@ def crearLogin(request):
     else:
         login_form = LoginForm()
     return render(request, 'calendario/crear_login.html', {'login_form':login_form})
+
+def listarLogin(request):
+    logins = Login.objects.filter(estado = True)
+    return render(request, 'calendario/listar_login.html', {'logins':logins})
+
+def editarLogin(request, id):
+    login_form = None
+    error = None
+    try:
+        login = Login.objects.get(id=id)
+        if request.method == 'GET':
+            login_form = LoginForm(instance=login)
+        else:
+            login_form = LoginForm(request.POST, instance=login)
+            if login_form.is_valid():
+                login_form.save()
+            return redirect('index')
+    except ObjectDoesNotExist as e:
+        error = e
+    return render(request, 'calendario/crear_login.html', {'login_form': login_form, 'error': error})
+
+def eliminarLogin(request, id):
+    login = Login.objects.get(id=id)
+    if request.method == 'POST':
+        login.estado = False
+        login.save()
+        return redirect('calendario:listar_login')
+    return render(request, 'calendario/eliminar_login.html', {'login':login})
+
 
 def crearUsuario(request):
     if request.method == 'POST':
