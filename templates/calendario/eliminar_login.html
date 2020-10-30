@@ -1,13 +1,23 @@
 {% extends 'index.html' %}
 {% block titulo %}
+<<<<<<< HEAD
     Eliminacion de Logins
+=======
+    Eliminar login
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
 {% endblock titulo %}
 {% block body %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <form method="POST">
     {% csrf_token %}
+<<<<<<< HEAD
     <h2>¿Desea eliminar el registro {{ rol.username }}?</h2>
     <button type="submit">Eliminar</button>
     <a href="{% url 'calendario:listar_login' %}">Cancelar</a>
+=======
+    <h2>¿Desea eliminar el registro {{ login.nombre }}?</h2>
+      <button type="submit">Eliminar</button>
+      <a hreft="{% url 'calenadrio:listar_login'%}">Cancelar</a>
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
 </form>
 {% endblock body %}

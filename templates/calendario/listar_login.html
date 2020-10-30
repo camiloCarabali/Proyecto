@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+<<<<<<< HEAD
 {% block titulo %}
     Listado de Logins
 {% endblock titulo %}
@@ -23,12 +24,45 @@
                         <td>
                             <a href="{% url 'calendario:editar_login' login.id %}">Editar</a>
                             <a href="{% url 'calendario:eliminar_login' login.id %}">Eliminar</a>
+=======
+
+{% block titulo %}
+    listado Login
+{% endblock titulo %}
+
+{% block body %}
+
+    {% if autores %}
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Contrasena</th>
+                <th>Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for login in login %}
+                    <tr>
+                        <td>{{ login.id }}</td>
+                        <td>{{ login.usuario}}</td>
+                        <td>{{ login.contrasena }}</td>
+                        <td>
+                            <a href="{% url 'calendario:editar_autor' login.id %}">Editar</a>
+                            <a href="{% url 'calendario:eliminar_autor' login.id %}">Eliminar</a>
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
+<<<<<<< HEAD
         <h1>No existen logins registrados</h1>
     {% endif %}
+=======
+        <h1> No exiten registros de Login</h1>
+
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
 {% endblock body %}

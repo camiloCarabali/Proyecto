@@ -8,6 +8,7 @@ from .models import Rol
 from .models import Login
 from .models import Usuario
 from .models import Actividad
+from .models import Login
 
 def Home(request):
     return render(request, 'index.html')
@@ -63,8 +64,13 @@ def crearLogin(request):
     return render(request, 'calendario/crear_login.html', {'login_form':login_form})
 
 def listarLogin(request):
+<<<<<<< HEAD
     logins = Login.objects.filter(estado = True)
     return render(request, 'calendario/listar_login.html', {'logins':logins})
+=======
+    login = Login.objects.filter(estado = True)
+    return render(request,'calendario/listar_login.html',{'login':login})
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
 
 def editarLogin(request, id):
     login_form = None
@@ -80,16 +86,28 @@ def editarLogin(request, id):
             return redirect('index')
     except ObjectDoesNotExist as e:
         error = e
+<<<<<<< HEAD
     return render(request, 'calendario/crear_login.html', {'login_form': login_form, 'error': error})
 
 def eliminarLogin(request, id):
     login = Login.objects.get(id=id)
+=======
+
+    return render(request,'calendario/crear_login.html', {'login_form':login_form, 'error':error})
+
+def eliminarLogin(request, id):
+    login = Login.objects.get(id = id)
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
     if request.method == 'POST':
         login.estado = False
         login.save()
         return redirect('calendario:listar_login')
+<<<<<<< HEAD
     return render(request, 'calendario/eliminar_login.html', {'login':login})
 
+=======
+    return render(request,'calendario/eliminar_login.html',{'login':login})
+>>>>>>> d7851e2b3462a83ed361333af7cf47e7e077360e
 
 def crearUsuario(request):
     if request.method == 'POST':
