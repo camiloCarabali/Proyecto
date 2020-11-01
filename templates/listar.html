@@ -10,6 +10,24 @@ Actividades Creadas
 {% endblock titulo_principal %}
 
 {% block body %}
+<div class="container">
+          <div class="row">
+            <div class="col-md-12 search">
+              <form method="get">
+                <div id="custom-search-input">
+                  <div class="input-group col-md-12">
+                    <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
+                    <span class="input-group-list">
+                      <i class="icon icon-search"></i>
+                      <button type="submit" class="boton btn-success">Buscar</button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <br>
     {% if actividades %}
         <center>
             <table class="egt" border="">
@@ -21,6 +39,7 @@ Actividades Creadas
                         <th>HoraFinal</th>
                         <th>Descripcion</th>
                         <th>Usuario</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +51,10 @@ Actividades Creadas
                             <td>{{ actividad.horaFinal }}</td>
                             <td>{{ actividad.descripcion }}</td>
                             <td>{{ actividad.usuario_id }}</td>
+                            <td>
+                            <a href="{% url 'calendario:editar' actividad.id %}">Editar</a>
+                            <a href="{% url 'calendario:eliminar' actividad.id %}">Eliminar</a>
+                        </td>
                         </tr>
                     {% endfor %}
                 </tbody>

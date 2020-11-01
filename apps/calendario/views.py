@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from .forms import RolForm
 from .forms import LoginForm
 from .forms import UsuarioForm
@@ -12,21 +14,50 @@ from .models import Login
 def Home(request):
     return render(request, 'index2.html')
 
-def crear(request):
+def crearActividad(request):
     if request.method == 'POST':
         print(request.POST)
         actividad_form = ActividadForm(request.POST)
         if actividad_form.is_valid():
             actividad_form.save()
-            return redirect('index2')
+            return redirect('/')
     else:
         actividad_form = ActividadForm()
     return render(request, 'crear.html', {'actividad_form': actividad_form})
 
-def listar(request):
-    actividades = Actividad.objects.filter(estado = True)
+def listarAcividad(request):
+    queryset = request.GET.get("buscar")
+    actividades = Actividad.objects.filter(estado=True)
+    if queryset:
+        actividades = Actividad.objects.filter(
+            Q(descripcion__icontains = queryset),
+            estado = True
+        ).distinct()
     return render(request, 'listar.html', {'actividades':actividades})
 
+def editarActividad(request, id):
+    actividad_form = None
+    error = None
+    try:
+        actividad = Actividad.objects.get(id=id)
+        if request.method == 'GET':
+            actividad_form = ActividadForm(instance=actividad)
+        else:
+            actividad_form = ActividadForm(request.POST, instance=actividad)
+            if actividad_form.is_valid():
+                actividad_form.save()
+            return redirect('/listar')
+    except ObjectDoesNotExist as e:
+        error = e
+    return render(request, 'crear.html', {'actividad_form': actividad_form, 'error': error})
+
+def eliminarActividad(request, id):
+    actividad =Actividad.objects.get(id=id)
+    if request.method == 'POST':
+        actividad.estado = False
+        actividad.save()
+        return redirect('/listar')
+    return render(request, 'eliminar.html', {'actividad': actividad})
 '''
 def crearRol(request):
     if request.method == 'POST':

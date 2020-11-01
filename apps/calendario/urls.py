@@ -6,8 +6,10 @@ from .views import *
 #from .views import crearActividad, listarActividad, editarActividad, eliminarActividad
 urlpatterns = [
     path('', Home, name = 'index2'),
-    path('crear/', crear, name = 'crear'),
-    path('listar/', listar, name = 'listar'),
+    path('crear/', crearActividad, name = 'crear'),
+    path('listar/', listarAcividad, name = 'listar'),
+    path('editar/<int:id>', editarActividad, name = 'editar'),
+    path('eliminar/<int:id>', eliminarActividad, name = 'eliminar'),
 
     #path('crear_rol/', crearRol, name = 'crear_rol'),
     #path('listar_rol/', listarRol, name = 'listar_rol'),
