@@ -1,11 +1,13 @@
 from django.urls import path
-from .views import Home
+from .views import *
 #from .views import crearRol, listarRol, editarRol, eliminarRol
 #from .views import crearLogin,listarLogin, editarLogin, eliminarLogin
 #from .views import crearUsuario, listarUsuario, editarUsuario, eliminarUsuario
 #from .views import crearActividad, listarActividad, editarActividad, eliminarActividad
 urlpatterns = [
     path('', Home, name = 'index2'),
+    path('crear/', crear, name = 'crear'),
+    path('listar/', listar, name = 'listar'),
 
     #path('crear_rol/', crearRol, name = 'crear_rol'),
     #path('listar_rol/', listarRol, name = 'listar_rol'),

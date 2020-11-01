@@ -1,0 +1,24 @@
+{% extends 'index2.html' %}
+{% load static %}
+
+{% block titulo %}
+Crear
+{% endblock titulo %}
+
+{% block titulo_principal %}
+Crear Nueva Actividad
+{% endblock titulo_principal %}
+
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    {% if error %}
+        <h2>{{ error }}</h2>
+    {% else %}
+        {{ actividad_form.as_p }}
+        <button type="submit">Crear</button>
+    {% endif %}
+</form>
+{% endblock body %}
+
+

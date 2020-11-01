@@ -1,0 +1,43 @@
+{% extends 'index2.html' %}
+{% load static %}
+
+{% block titulo %}
+Listar
+{% endblock titulo %}
+
+{% block titulo_principal %}
+Actividades Creadas
+{% endblock titulo_principal %}
+
+{% block body %}
+    {% if actividades %}
+        <center>
+            <table class="egt" border="">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Fecha</th>
+                        <th>HoraInicial</th>
+                        <th>HoraFinal</th>
+                        <th>Descripcion</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for actividad in actividades %}
+                        <tr>
+                            <td>{{ actividad.id }}</td>
+                            <td>{{ actividad.fecha }}</td>
+                            <td>{{ actividad.horaInicial }}</td>
+                            <td>{{ actividad.horaFinal }}</td>
+                            <td>{{ actividad.descripcion }}</td>
+                            <td>{{ actividad.usuario_id }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </center>
+        {% else %}
+            <h1>No existen Actividades registradas</h1>
+        {% endif %}
+{% endblock body %}

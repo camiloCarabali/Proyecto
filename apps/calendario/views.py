@@ -12,6 +12,21 @@ from .models import Login
 def Home(request):
     return render(request, 'index2.html')
 
+def crear(request):
+    if request.method == 'POST':
+        print(request.POST)
+        actividad_form = ActividadForm(request.POST)
+        if actividad_form.is_valid():
+            actividad_form.save()
+            return redirect('index2')
+    else:
+        actividad_form = ActividadForm()
+    return render(request, 'crear.html', {'actividad_form': actividad_form})
+
+def listar(request):
+    actividades = Actividad.objects.filter(estado = True)
+    return render(request, 'listar.html', {'actividades':actividades})
+
 '''
 def crearRol(request):
     if request.method == 'POST':
