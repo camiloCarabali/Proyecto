@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.core.paginator import Paginator
 from .forms import RolForm
 from .forms import LoginForm
 from .forms import UsuarioForm
@@ -33,6 +34,10 @@ def listarAcividad(request):
             Q(descripcion__icontains = queryset),
             estado = True
         ).distinct()
+
+    paginator = Paginator(actividades, 5)
+    page = request.GET.get('page')
+    actividades = paginator.get_page(page)
     return render(request, 'listar.html', {'actividades':actividades})
 
 def editarActividad(request, id):

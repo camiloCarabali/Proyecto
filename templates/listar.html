@@ -62,5 +62,27 @@ Actividades Creadas
         </center>
         {% else %}
             <h1>No existen Actividades registradas</h1>
-        {% endif %}
+    {% endif %}
+    <br>
+    <div class="row">
+        <div class="">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 float-left">
+                {% if actividades.has_previous %}
+                <div class="clearfix">
+                    <a href="?page={{ actividades.previous_page_number }} {% if request.GET.search %} &q={{ request.GET.search }} {% endif %}" class="btn btn-primary float-left">Anterior</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 float-right">
+                {% if actividades.has_next %}
+                <div class="clearfix">
+                    <a href="?page={{ actividades.next_page_number }} {% if request.GET.search %} &q={{ request.GET.search }} {% endif %} " class="btn btn-primary float-left">Siguiente</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
 {% endblock body %}
