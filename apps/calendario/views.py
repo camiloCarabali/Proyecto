@@ -3,17 +3,31 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .forms import RolForm
-from .forms import LoginForm
-from .forms import UsuarioForm
-from .forms import ActividadForm
-from .models import Rol
-from .models import Usuario
-from .models import Actividad
-from .models import Login
+from django.views.generic import TemplateView, ListView
+from .forms import *
 
-def Home(request):
-    return render(request, 'index2.html')
+
+class Inicio(TemplateView):
+    template_name = 'index2.html'
+
+class listadoActividad(ListView):
+    model = Actividad
+    template_name = 'listar.html'
+    context_object_name = 'actividades'
+    queryset = Actividad.objects.filter(estado=True)
+    def get(self, request, *args, **kwargs):
+        queryset = request.GET.get("buscar")
+        actividades = Actividad.objects.filter(estado=True)
+        if queryset:
+            actividades = Actividad.objects.filter(
+                Q(descripcion__icontains=queryset),
+                estado=True
+            ).distinct()
+        paginator = Paginator(actividades, 5)
+        page = request.GET.get('page')
+        actividades = paginator.get_page(page)
+        return render(request, self.template_name, {'actividades': actividades})
+
 
 def crearActividad(request):
     if request.method == 'POST':

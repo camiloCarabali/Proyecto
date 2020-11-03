@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-#from apps.calendario.views import Home
+from apps.calendario.views import Inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('calendario/',include(('apps.calendario.urls','calendario'))),
-    #path('home/', Home, name = 'index')
-    path('', include(('apps.calendario.urls', 'calendario'))),
+    path('calendario/',include(('apps.calendario.urls','calendario'))),
+    path('', Inicio.as_view(), name = 'index2'),
+    #path('', include(('apps.calendario.urls', 'calendario'))),
 ]
