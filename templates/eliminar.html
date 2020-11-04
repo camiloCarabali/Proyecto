@@ -4,11 +4,15 @@
 {% block titulo %}
     Eliminacion de Actividades
 {% endblock titulo %}
+{% block titulo_principal %}
+{% endblock titulo_principal %}
+{% block titulo_segundario %}
+{% endblock titulo_segundario %}
 {% block body %}
-<form method="POST">
+<p method="POST">
     {% csrf_token %}
-    <h2>¿Desea eliminar la Actividad?</h2>
-    <button type="submit">Eliminar</button>
+<p><strong><h2>¿Desea eliminar la Actividad?</h2></strong></p>
+    <button type="submit" class="btn btn-danger">Confirmar</button>
     <a href="{% url 'calendario:listar' %}">Cancelar</a>
 </form>
 {% endblock body %}

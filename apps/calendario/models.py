@@ -47,8 +47,8 @@ class Usuario(models.Model):
 class Actividad(models.Model):
     id = models.AutoField(primary_key=True)
     fecha = models.DateField('Fecha', blank=False, null=False)
-    horaInicial = models.TimeField('horaInicial', blank=False, null=False)
-    horaFinal = models.TimeField('horaFinal', blank=False, null=False)
+    horaInicial = models.TimeField('HoraInicial', blank=False, null=False)
+    horaFinal = models.TimeField('HoraFinal', blank=False, null=False)
     descripcion = models.TextField(blank=False, null=False)
     usuario_id = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     estado = models.BooleanField('Estado', default=True)

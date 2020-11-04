@@ -3,14 +3,15 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from django.core.paginator import Paginator
-from django.views.generic import TemplateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
 from .forms import *
 
 
 class Inicio(TemplateView):
     template_name = 'index2.html'
 
-class listadoActividad(ListView):
+class ListadoActividad(ListView):
     model = Actividad
     template_name = 'listar.html'
     context_object_name = 'actividades'
@@ -28,6 +29,21 @@ class listadoActividad(ListView):
         actividades = paginator.get_page(page)
         return render(request, self.template_name, {'actividades': actividades})
 
+class ActualizarActividad(UpdateView):
+    model = Actividad
+    template_name = 'crear.html'
+    form_class = ActividadForm
+    success_url = reverse_lazy('listar')
+
+class CrearActividad(CreateView):
+    model = Actividad
+    template_name = 'crear.html'
+    form_class = ActividadForm
+    success_url = reverse_lazy('listar')
+
+class EliminarActividad(DeleteView):
+    Model = Actividad
+    success_url = reverse_lazy('listar')
 
 def crearActividad(request):
     if request.method == 'POST':
@@ -35,7 +51,7 @@ def crearActividad(request):
         actividad_form = ActividadForm(request.POST)
         if actividad_form.is_valid():
             actividad_form.save()
-            return redirect('/')
+            return redirect('/calendario/listar')
     else:
         actividad_form = ActividadForm()
     return render(request, 'crear.html', {'actividad_form': actividad_form})
@@ -65,7 +81,7 @@ def editarActividad(request, id):
             actividad_form = ActividadForm(request.POST, instance=actividad)
             if actividad_form.is_valid():
                 actividad_form.save()
-            return redirect('/listar')
+            return redirect('/calendario/listar')
     except ObjectDoesNotExist as e:
         error = e
     return render(request, 'crear.html', {'actividad_form': actividad_form, 'error': error})
@@ -75,7 +91,7 @@ def eliminarActividad(request, id):
     if request.method == 'POST':
         actividad.estado = False
         actividad.save()
-        return redirect('/listar')
+        return redirect('/calendario/listar')
     return render(request, 'eliminar.html', {'actividad': actividad})
 '''
 def crearRol(request):

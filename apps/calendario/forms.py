@@ -25,3 +25,6 @@ class ActividadForm(forms.ModelForm):
         model = Actividad
         fields = '__all__'
         exclude = ('id', 'estado')
+        labels = {
+            'usuario_id': 'Usuario'
+        }
