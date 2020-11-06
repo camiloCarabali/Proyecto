@@ -6,4 +6,5 @@ urlpatterns = [
     path('listar/', ListadoActividad.as_view(), name = 'listar'),
     path('editar/<int:id>', editarActividad, name = 'editar'),
     path('eliminar/<int:id>', eliminarActividad, name = 'eliminar'),
+
 ]
