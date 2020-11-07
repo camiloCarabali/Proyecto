@@ -1,20 +1,79 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}Index{% endblock title %}</title>
-    {% block extracss %}
-    {% endblock extracss %}
-</head>
-<body>
-    {% block body %}
-<h1>Guardados</h1>
-    {% endblock body %}
 
-    {% block extrajs %}
-    {% endblock extrajs %}
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{% block titulo %}Guadaña Calendar{% endblock titulo %}</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="{% static 'css/stylish-portfolio.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="{% url 'index' %}">Home</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="{% url 'calendario:crear' %}">Crear Actividad</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="{% url 'calendario:listar' %}">Ver Actividades</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="{% url 'logout' %}">Salir</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container text-center my-auto">
+      <h1 class="mb-1">{% block titulo_principal %}Guadaña Calendar{% endblock titulo_principal %}</h1>
+      <h3 class="mb-5">
+        <em>{% block titulo_segundario %}Tan facil como cortar con una guadaña{% endblock titulo_segundario %}</em>
+      </h3>
+      <h5 class="mb-5">{% block body %}{% endblock body %}</h5>
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'js/stylish-portfolio.min.js' %}"></script>
+
 </body>
+
 </html>

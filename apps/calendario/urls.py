@@ -1,10 +1,11 @@
 from django.urls import path
 from .views import *
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('crear/', crearActividad, name = 'crear'),
-    path('listar/', ListadoActividad.as_view(), name = 'listar'),
-    path('editar/<int:id>', editarActividad, name = 'editar'),
-    path('eliminar/<int:id>', eliminarActividad, name = 'eliminar'),
+    path('crear/', login_required(CrearActividad.as_view()), name='crear'),
+    path('listar/', login_required(ListadoActividad.as_view()), name='listar'),
+    path('editar/<int:pk>/', login_required(ActualizarActividad.as_view()), name='editar'),
+    path('eliminar/<int:pk>/', login_required(EliminarActividad.as_view()), name='eliminar'),
 
 ]

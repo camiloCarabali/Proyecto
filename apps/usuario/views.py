@@ -12,7 +12,7 @@ from .forms import FormularioLogin
 class Login(FormView):
     template_name = 'login.html'
     form_class = FormularioLogin
-    success_url = reverse_lazy('index2')
+    success_url = reverse_lazy('index')
 
     @method_decorator(csrf_protect)
     @method_decorator(never_cache)

@@ -1,4 +1,4 @@
-{% extends 'index2.html' %}
+{% extends 'index.html' %}
 {% load static %}
 
 {% block titulo %}
@@ -8,16 +8,14 @@ Crear
 {% block titulo_principal %}
 Crear Nueva Actividad
 {% endblock titulo_principal %}
+{% block titulo_segundario %}
+{% endblock titulo_segundario %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% block body %}
-<form method="POST">
+<form method="POST" enctype="multipart/form-data" class="form-horizontal">
     {% csrf_token %}
-    {% if error %}
-        <h2>{{ error }}</h2>
-    {% else %}
-        {{ actividad_form.as_p }}
-        <button type="submit">Crear</button>
-    {% endif %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">CREAR</button>
 </form>
 {% endblock body %}
 

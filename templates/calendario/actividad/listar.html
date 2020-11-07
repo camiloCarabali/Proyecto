@@ -1,4 +1,4 @@
-{% extends 'index2.html' %}
+{% extends 'index.html' %}
 {% load static %}
 
 {% block titulo %}
@@ -8,6 +8,8 @@ Listar
 {% block titulo_principal %}
 Actividades Creadas
 {% endblock titulo_principal %}
+{% block titulo_segundario %}
+{% endblock titulo_segundario %}
 
 {% block body %}
 <div class="container">
@@ -17,10 +19,7 @@ Actividades Creadas
                 <div id="custom-search-input">
                   <div class="input-group col-md-12">
                     <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
-                    <span class="input-group-list">
-                      <i class="icon icon-search"></i>
-                      <button type="submit" class="boton btn-success">Buscar</button>
-                    </span>
+                      <button type="submit" class="btn btn-success">Buscar</button>
                   </div>
                 </div>
               </form>
@@ -34,12 +33,12 @@ Actividades Creadas
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Fecha</th>
-                        <th>HoraInicial</th>
-                        <th>HoraFinal</th>
-                        <th>Descripcion</th>
-                        <th>Usuario</th>
-                        <th>Opciones</th>
+                        <th><center>Fecha</center></th>
+                        <th><center>HoraInicial</center></th>
+                        <th><center>HoraFinal</center></th>
+                        <th><center>Descripcion</center></th>
+                        <th><center>Usuario</center></th>
+                        <th><center>Opciones</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,8 +51,8 @@ Actividades Creadas
                             <td>{{ actividad.descripcion }}</td>
                             <td>{{ actividad.usuario_id }}</td>
                             <td>
-                            <a href="{% url 'calendario:editar' actividad.id %}">Editar</a>
-                            <a href="{% url 'calendario:eliminar' actividad.id %}">Eliminar</a>
+                            <a href="{% url 'calendario:editar' actividad.id %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'calendario:eliminar' actividad.id %}" class="btn btn-danger">Eliminar</a>
                         </td>
                         </tr>
                     {% endfor %}
