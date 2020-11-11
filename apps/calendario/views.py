@@ -11,6 +11,14 @@ from .forms import *
 class Inicio(TemplateView):
     template_name = 'index.html'
 
+class Calendario(ListView):
+    model = Actividad
+    template_name = 'calendario/actividad/calendario.html'
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(estado = True)
+        return queryset
+
 
 class CrearActividad(CreateView):
     model = Actividad

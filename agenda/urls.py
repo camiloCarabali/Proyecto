@@ -26,5 +26,4 @@ urlpatterns = [
     path('', login_required(Inicio.as_view()), name = 'index'),
     path('accounts/login/', Login.as_view(), name = 'login'),
     path('logout/', login_required(logoutUsuario), name = 'logout'),
-
 ]
