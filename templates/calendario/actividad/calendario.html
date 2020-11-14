@@ -23,7 +23,7 @@ Calendario de Actividades
             events: [
                 {% for actividad in object_list %}
                 {
-                    title: "{{ actividad.descripcion }}",
+                    title: "{{ actividad.titulo }}",
                     start: '{{ actividad.fecha | date:"Y-m-d" }}',
                     end: '{{ actividad.fecha | date:"Y-m-d" }}',
                 },

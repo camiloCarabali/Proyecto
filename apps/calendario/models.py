@@ -49,6 +49,7 @@ class Usuario(models.Model):
 
 class Actividad(models.Model):
     id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=50, blank=False, null=True)
     fecha = models.DateField('Fecha', blank=False, null=False)
     horaInicial = models.TimeField('HoraInicial', blank=False, null=False)
     horaFinal = models.TimeField('HoraFinal', blank=False, null=False)
@@ -59,3 +60,7 @@ class Actividad(models.Model):
     class Meta:
         verbose_name = 'Actividad'
         verbose_name_plural = 'Actividades'
+        ordering = ['titulo']
+
+    def __str__(self):
+        return self.titulo
