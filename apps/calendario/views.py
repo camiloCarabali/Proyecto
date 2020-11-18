@@ -38,7 +38,7 @@ class ListadoActividad(ListView):
         actividades = Actividad.objects.filter(estado=True)
         if queryset:
             actividades = Actividad.objects.filter(
-                Q(descripcion__icontains=queryset),
+                Q(titulo__icontains=queryset),
                 estado=True
             ).distinct()
         paginator = Paginator(actividades, 5)
