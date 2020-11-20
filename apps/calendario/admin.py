@@ -35,8 +35,8 @@ class ActividadResources(resources.ModelResource):
         model = Actividad
 
 class ActividadAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    search_fields = ['titulo','fecha', 'horaInicial', 'horaFinal', 'descripcion', 'usuario_id']
-    list_display = ('titulo','fecha', 'horaInicial', 'horaFinal', 'descripcion', 'usuario_id', 'estado')
+    search_fields = ['titulo', 'fechaFinal', 'descripcion', 'usuario_id']
+    list_display = ('titulo','fechaInicial', 'fechaFinal', 'descripcion', 'estado')
     resources_class = ActividadResources
 
 

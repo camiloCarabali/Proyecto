@@ -50,11 +50,10 @@ class Usuario(models.Model):
 class Actividad(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=50, blank=False, null=True)
-    fecha = models.DateField('Fecha', blank=False, null=False)
-    horaInicial = models.TimeField('HoraInicial', blank=False, null=False)
-    horaFinal = models.TimeField('HoraFinal', blank=False, null=False)
+    fechaInicial = models.DateField('Fecha de Creacion', auto_now=True, auto_now_add=False)
+    fechaFinal = models.DateField('Fecha de Vencimiento', auto_now=False, auto_now_add=False, blank=True, null=True)
     descripcion = models.TextField(blank=False, null=False)
-    usuario_id = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario_id = models.ManyToManyField(Usuario)
     estado = models.BooleanField('Estado', default=True)
 
     class Meta:

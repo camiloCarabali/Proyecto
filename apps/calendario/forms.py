@@ -27,12 +27,10 @@ class UsuarioForm(forms.ModelForm):
 class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
-        fields = ['titulo', 'fecha', 'horaInicial', 'horaFinal', 'descripcion', 'usuario_id']
+        fields = ['titulo', 'fechaFinal', 'descripcion', 'usuario_id']
         labels = {
             'titulo': 'Titulo',
-            'horaInicial': 'Hora de Inicio',
-            'horaFinal': 'Hora de Finalizacion',
-            'usuario_id': 'Usuario'
+            'usuario_id': 'Usuarios'
         }
         widgets = {
             'titulo': forms.TextInput(
@@ -40,17 +38,7 @@ class ActividadForm(forms.ModelForm):
                     'class': 'form-control'
                 }
             ),
-            'fecha': forms.SelectDateWidget(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'horaInicial': forms.TimeInput(
-                attrs={
-                    'class': 'form-control'
-                }
-            ),
-            'horaFinal': forms.TimeInput(
+            'fechaFinal': forms.SelectDateWidget(
                 attrs={
                     'class': 'form-control'
                 }
@@ -61,7 +49,7 @@ class ActividadForm(forms.ModelForm):
                     'id': 'descripcion'
                 }
             ),
-            'usuario_id': forms.Select(
+            'usuario_id': forms.SelectMultiple(
                 attrs={
                     'class': 'form-control'
                 }

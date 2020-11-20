@@ -33,11 +33,10 @@ Actividades Creadas
                 <thead>
                     <tr>
                         <th><center>Titulo</center></th>
-                        <th><center>Fecha</center></th>
                         <th><center>HoraInicial</center></th>
                         <th><center>HoraFinal</center></th>
                         <th><center>Descripcion</center></th>
-                        <th><center>Usuario</center></th>
+                        <th><center>Usuarios</center></th>
                         <th><center>Opciones</center></th>
                     </tr>
                 </thead>
@@ -45,11 +44,14 @@ Actividades Creadas
                     {% for actividad in actividades %}
                         <tr>
                             <td>{{ actividad.titulo }}</td>
-                            <td>{{ actividad.fecha }}</td>
-                            <td>{{ actividad.horaInicial }}</td>
-                            <td>{{ actividad.horaFinal }}</td>
+                            <td>{{ actividad.fechaInicial }}</td>
+                            <td>{{ actividad.fechaFinal }}</td>
                             <td>{{ actividad.descripcion }}</td>
-                            <td>{{ actividad.usuario_id }}</td>
+                            <td>
+                                {% for user in actividad.usuario_id.all %}
+                                    <li>{{ user.nombres }}</li>
+                                {% endfor %}
+                            </td>
                             <td>
                             <a href="{% url 'calendario:editar' actividad.id %}" class="btn btn-primary">Editar</a>
                             <a href="{% url 'calendario:eliminar' actividad.id %}" class="btn btn-danger">Eliminar</a>

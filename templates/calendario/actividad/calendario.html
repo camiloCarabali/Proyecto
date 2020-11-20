@@ -16,6 +16,7 @@ Calendario de Actividades
 <link rel="stylesheet" href="{% static 'fullcalendar/lib/main.css' %}">
 <div id="calendar"></div>
 <script src="{% static 'fullcalendar/lib/main.js' %}"></script>
+<script src="{% static 'fullcalendar/lib/locales-all.js' %}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         var calendarUI = document.getElementById('calendar');
@@ -24,13 +25,14 @@ Calendario de Actividades
                 {% for actividad in object_list %}
                 {
                     title: "{{ actividad.titulo }}",
-                    start: '{{ actividad.fecha | date:"Y-m-d" }}',
-                    end: '{{ actividad.fecha | date:"Y-m-d" }}',
+                    start: '{{ actividad.fechaInicial | date:"Y-m-d" }}',
+                    end: '{{ actividad.fechaFinal | date:"Y-m-d" }}',
                 },
                 {% endfor %}
             ]
         });
         calendar.render();
+        calendar.setOption('locale', 'es');
     });
 </script>
 {% endblock body %}
