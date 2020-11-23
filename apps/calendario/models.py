@@ -50,7 +50,7 @@ class Usuario(models.Model):
 class Actividad(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=50, blank=False, null=True)
-    fechaInicial = models.DateField('Fecha de Creacion', auto_now=True, auto_now_add=False)
+    fechaInicial = models.DateField('Fecha de Creacion', auto_now=False, auto_now_add=False, blank=True, null=True)
     fechaFinal = models.DateField('Fecha de Vencimiento', auto_now=False, auto_now_add=False, blank=True, null=True)
     descripcion = models.TextField(blank=False, null=False)
     usuario_id = models.ManyToManyField(Usuario)

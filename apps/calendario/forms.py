@@ -68,13 +68,18 @@ class UsuarioForm(forms.ModelForm):
 class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
-        fields = ['titulo', 'fechaFinal', 'descripcion', 'usuario_id']
+        fields = ['titulo', 'fechaInicial','fechaFinal', 'descripcion', 'usuario_id']
         labels = {
             'titulo': 'Titulo',
             'usuario_id': 'Usuarios'
         }
         widgets = {
             'titulo': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'fechaInicial': forms.SelectDateWidget(
                 attrs={
                     'class': 'form-control'
                 }

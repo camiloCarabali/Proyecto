@@ -9,6 +9,6 @@ urlpatterns = [
     path('eliminar/<int:pk>/', login_required(EliminarActividad.as_view()), name='eliminar'),
     path('calendario/', login_required(Calendario.as_view()), name='calendario'),
 
-    path('crearLogin/', login_required(CrearLogin.as_view()), name='crearLogin'),
-    path('crearUsuario/', login_required(CrearUsuario.as_view()), name='crearUsuario')
+    path('crearLogin/', CrearLogin.as_view(), name='crearLogin'),
+    path('crearUsuario/', CrearUsuario.as_view(), name='crearUsuario')
 ]

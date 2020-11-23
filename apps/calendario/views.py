@@ -34,11 +34,12 @@ class CrearLogin(CreateView):
     form_class = LoginForm
     success_url = reverse_lazy('calendario:crearUsuario')
 
+
 class CrearUsuario(CreateView):
     model = Usuario
     template_name = 'calendario/usuario/crearUsuario.html'
     form_class = UsuarioForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('login')
 
 
 class ListadoActividad(ListView):
