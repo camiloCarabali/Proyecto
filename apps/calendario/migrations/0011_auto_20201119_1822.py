@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='actividad',
             name='usuario_id',
-            field=models.ManyToManyField(to='calendario.Usuario'),
+            field=models.ManyToManyField(to='calendario.usuario'),
         ),
     ]

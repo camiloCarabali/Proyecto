@@ -15,13 +15,54 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = Login
         fields = ['username', 'password']
+        labels = {
+            'username': 'Nombre de usuario',
+            'password': 'Contraseña'
+        }
+        widgets = {
+            'username': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'password': forms.PasswordInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            )
+        }
 
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = '__all__'
-        exclude = ('id', 'estado')
+        fields = ['nombres', 'apellidos', 'login_id', 'rol_id']
+        labels = {
+            'login_id': 'Usuario',
+            'rol_id': 'Rol'
+        }
+        widgets = {
+            'nombres': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'apellidos': forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'login_id': forms.Select(
+                attrs={
+                    'class': 'form-control'
+                }
+            ),
+            'rol_id': forms.Select(
+                attrs={
+                    'class': 'form-control'
+                }
+            )
+        }
 
 
 class ActividadForm(forms.ModelForm):

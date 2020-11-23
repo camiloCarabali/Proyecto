@@ -11,12 +11,13 @@ from .forms import *
 class Inicio(TemplateView):
     template_name = 'index.html'
 
+
 class Calendario(ListView):
     model = Actividad
     template_name = 'calendario/actividad/calendario.html'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(estado = True)
+        queryset = self.model.objects.filter(estado=True)
         return queryset
 
 
@@ -25,6 +26,19 @@ class CrearActividad(CreateView):
     template_name = 'calendario/actividad/crear.html'
     form_class = ActividadForm
     success_url = reverse_lazy('calendario:listar')
+
+
+class CrearLogin(CreateView):
+    model = Login
+    template_name = 'calendario/usuario/crearLogin.html'
+    form_class = LoginForm
+    success_url = reverse_lazy('calendario:crearUsuario')
+
+class CrearUsuario(CreateView):
+    model = Usuario
+    template_name = 'calendario/usuario/crearUsuario.html'
+    form_class = UsuarioForm
+    success_url = reverse_lazy('index')
 
 
 class ListadoActividad(ListView):

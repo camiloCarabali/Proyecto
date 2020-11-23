@@ -7,5 +7,8 @@ urlpatterns = [
     path('listar/', login_required(ListadoActividad.as_view()), name='listar'),
     path('editar/<int:pk>/', login_required(ActualizarActividad.as_view()), name='editar'),
     path('eliminar/<int:pk>/', login_required(EliminarActividad.as_view()), name='eliminar'),
-    path('calendario/', login_required(Calendario.as_view()), name='calendario')
+    path('calendario/', login_required(Calendario.as_view()), name='calendario'),
+
+    path('crearLogin/', login_required(CrearLogin.as_view()), name='crearLogin'),
+    path('crearUsuario/', login_required(CrearUsuario.as_view()), name='crearUsuario')
 ]

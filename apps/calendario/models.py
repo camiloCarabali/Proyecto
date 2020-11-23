@@ -39,7 +39,7 @@ class Usuario(models.Model):
     estado = models.BooleanField('Estado', default=True)
 
     class Meta:
-        verbose_name = 'Usuario'
+        verbose_name = 'usuario'
         verbose_name_plural = 'Usuarios'
         ordering = ['nombres']
 

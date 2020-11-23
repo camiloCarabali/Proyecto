@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             options={'ordering': ['nombre'], 'verbose_name': 'Rol', 'verbose_name_plural': 'Roles'},
         ),
         migrations.CreateModel(
-            name='Usuario',
+            name='usuario',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('nombre', models.CharField(max_length=200)),
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('rol_id', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='calendario.rol')),
             ],
             options={
-                'verbose_name': 'Usuario',
+                'verbose_name': 'usuario',
                 'verbose_name_plural': 'Usuarios',
                 'ordering': ['nombre'],
             },
