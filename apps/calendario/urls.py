@@ -10,5 +10,6 @@ urlpatterns = [
     path('calendario/', login_required(Calendario.as_view()), name='calendario'),
 
     path('crearLogin/', CrearLogin.as_view(), name='crearLogin'),
-    path('crearUsuario/', CrearUsuario.as_view(), name='crearUsuario')
+    path('crearUsuario/', CrearUsuario.as_view(), name='crearUsuario'),
+    path('visitante/', CalendarioVisitante.as_view(), name='visitante'),
 ]

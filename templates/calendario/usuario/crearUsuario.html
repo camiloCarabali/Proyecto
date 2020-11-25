@@ -1,22 +1,16 @@
-{% extends 'index.html' %}
+{% extends 'login.html' %}
 {% load static %}
 
-{% block titulo %}
-Crear
-{% endblock titulo %}
-
-{% block titulo_principal %}
-Crear Nuevo Usuario
-{% endblock titulo_principal %}
-{% block titulo_segundario %}
-{% endblock titulo_segundario %}
-{% block navegador %}
-{% endblock navegador %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 {% block body %}
+<span class="login100-form-title p-b-32">
+    Crear Usuario
+</span>
 <form method="POST" enctype="multipart/form-data" class="form-horizontal">
     {% csrf_token %}
         {{ form.as_p }}
+        <br>
         <button type="submit" class="btn btn-success">Guardar</button>
 </form>
 {% endblock body %}

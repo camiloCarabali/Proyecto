@@ -20,6 +20,14 @@ class Calendario(ListView):
         queryset = self.model.objects.filter(estado=True)
         return queryset
 
+class CalendarioVisitante(ListView):
+    model = Actividad
+    template_name = 'calendario/actividad/visitante.html'
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(estado=True)
+        return queryset
+
 
 class CrearActividad(CreateView):
     model = Actividad
