@@ -1,4 +1,5 @@
-Feature: Ingresar al proyecto
+Feature: Ingresar a guadaña calendar
+  como usuario web, deseo ingresar a la aplicacion guadaña calendar.
 
   Scenario: Entrar a la aplicacion
     Given el navegador esta abierto
