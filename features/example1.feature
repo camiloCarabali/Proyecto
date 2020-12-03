@@ -7,4 +7,5 @@ Feature: Ingresar a guadaña calendar
     And lleno el campo username
     And lleno el campo password
     And le doy al boton login
+    And me redirecciona al index
     Then he ingrasado a la aplicacion
