@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de pruebas unitarias a los modelos Rol y Login del proyecto.
+'''
+
 from django.test import TestCase
 from .models import *
 import unittest

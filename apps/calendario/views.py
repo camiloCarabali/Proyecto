@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de metodos funcionales (CRUD) y de vistas del proyecto.
+'''
+
 from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
@@ -19,6 +25,7 @@ class Calendario(ListView):
     def get_queryset(self):
         queryset = self.model.objects.filter(estado=True)
         return queryset
+
 
 class CalendarioVisitante(ListView):
     model = Actividad

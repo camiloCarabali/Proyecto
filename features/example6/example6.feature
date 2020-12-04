@@ -1,5 +1,9 @@
-Feature: editar el dia de finalizacion de una actividad en la aplicacion
-  como usuario web deseo modificar el dia de finalizacion de una actividad.
+#Juan Camilo Carabali Caracas
+#Alejandro Rosas Cuesta
+#Creaion de prueba gherkin #6
+
+Feature: eliminar una actividad en la aplicacion
+  como usuario web deseo eliminar una actividad de la aplicacion.
 
   Background:
     Given el navegador esta abierto
@@ -9,13 +13,11 @@ Feature: editar el dia de finalizacion de una actividad en la aplicacion
     And le doy al boton login
     And me redirecciona al index
 
-  Scenario: editar fecha de finalizacion
+  Scenario: eliminar actividad
     And presiono el boton del menu
     And le doy a la opcion ver actividades
     And me redirecciona a las actividades creadas
-    And presiono el boton editar
-    And me redirecciona al formulario
-    And edito el dia de la finalizacion
-    And presiono el boton crear
+    And presiono el boton eliminar
+    And presiono el boton confirmar
     And me redirecciona a las actividades
-    Then he podido editar una actividad
+    Then he podido eliminar una actividad

@@ -1,3 +1,7 @@
+#Juan Camilo Carabali Caracas
+#Alejandro Rosas Cuesta
+#Creaion de prueba gherkin #1
+
 Feature: Ingresar a guadaña calendar
   como usuario web, deseo ingresar a la aplicacion guadaña calendar.
 

@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de prueba automatizada #5
+'''
+
 from behave import *
 from selenium import webdriver
 import time
@@ -62,20 +68,39 @@ def validarVer(context):
     time.sleep(2)
 
 
-@when('digito el titulo a buscar')
-def llenarCampoBuscar(context):
-    password_input = context.driver.find_element_by_xpath('//input[@name="buscar"]')
-    time.sleep(2)
-    password_input.send_keys('titulo')
+@when('presiono el boton editar')
+def presionarEditar(context):
+    context.driver.find_elements_by_xpath('//tbody/tr[1]/td[6]/a[1]')[0].click()
     time.sleep(2)
 
 
-@when('presiono el boton buscar')
-def presionarBotonBuscar(context):
-    context.driver.find_elements_by_xpath('//button[contains(text(),"Buscar")]')[0].click()
+@when('me redirecciona al formulario')
+def validarEditar(context):
+    text = context.driver.find_element_by_xpath('//h1[contains(text(),"Crear Nueva Actividad")]').text
+    assert text == "Crear Nueva Actividad"
     time.sleep(2)
 
 
-@then('he podido buscar una actividad')
+@when('edito el dia de la finalizacion')
+def editarDia(context):
+    context.driver.find_elements_by_xpath("//select[@name='fechaFinal_day']")[0].click()
+    context.driver.find_elements_by_xpath("//header/div[1]/h5[1]/form[1]/p[3]/select[1]/option[23]")[0].click()
+    time.sleep(2)
+
+
+@when('presiono el boton crear')
+def presionarCrear(context):
+    context.driver.find_elements_by_xpath('//button[contains(text(),"CREAR")]')[0].click()
+    time.sleep(2)
+
+
+@when('me redirecciona a las actividades')
+def validarVer(context):
+    text = context.driver.find_element_by_xpath('//h1[contains(text(),"Actividades Creadas")]').text
+    assert text == "Actividades Creadas"
+    time.sleep(5)
+
+
+@then('he podido editar una actividad')
 def cerrarNavegador(context):
     context.driver.close()

@@ -1,3 +1,7 @@
+#Juan Camilo Carabali Caracas
+#Alejandro Rosas Cuesta
+#Creaion de prueba gherkin #7
+
 Feature: ver calendario de actividades de la aplicacion
   como usuario web deseo visualizar el calendario de actividades de la aplicacion.
 

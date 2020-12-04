@@ -1,5 +1,9 @@
-Feature: eliminar una actividad en la aplicacion
-  como usuario web deseo eliminar una actividad de la aplicacion.
+#Juan Camilo Carabali Caracas
+#Alejandro Rosas Cuesta
+#Creaion de prueba gherkin #4
+
+Feature: buscar una actividad en la aplicacion
+  como usuario web deseo buscar una actividad.
 
   Background:
     Given el navegador esta abierto
@@ -9,11 +13,10 @@ Feature: eliminar una actividad en la aplicacion
     And le doy al boton login
     And me redirecciona al index
 
-  Scenario: eliminar actividad
+  Scenario: buscar actividad
     And presiono el boton del menu
     And le doy a la opcion ver actividades
     And me redirecciona a las actividades creadas
-    And presiono el boton eliminar
-    And presiono el boton confirmar
-    And me redirecciona a las actividades
-    Then he podido eliminar una actividad
+    And digito el titulo a buscar
+    And presiono el boton buscar
+    Then he podido buscar una actividad

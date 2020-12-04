@@ -1,3 +1,7 @@
+#Juan Camilo Carabali Caracas
+#Alejandro Rosas Cuesta
+#Creaion de prueba gherkin #3
+
 Feature: Crear una nueva actividad en la aplicacion
   como usuario web deseo crear una nueva actividad.
 

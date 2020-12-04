@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de URLS del proyecto.
+'''
+
 from django.urls import path
 from .views import *
 from django.contrib.auth.decorators import login_required

@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de prueba automatizada #2
+'''
+
 from behave import *
 from selenium import webdriver
 import time
@@ -23,4 +29,3 @@ def presionarBoton(context):
 @then('he podido ingresar a la aplicacion como visitante')
 def cerrarNavegador(context):
     context.driver.close()
-

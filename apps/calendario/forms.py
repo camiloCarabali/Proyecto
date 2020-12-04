@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de formularios de los modelos del proyecto.
+'''
+
 from django import forms
 from .models import Rol
 from .models import Login
@@ -68,7 +74,7 @@ class UsuarioForm(forms.ModelForm):
 class ActividadForm(forms.ModelForm):
     class Meta:
         model = Actividad
-        fields = ['titulo', 'fechaInicial','fechaFinal', 'descripcion', 'usuario_id']
+        fields = ['titulo', 'fechaInicial', 'fechaFinal', 'descripcion', 'usuario_id']
         labels = {
             'titulo': 'Titulo',
             'usuario_id': 'Usuarios'

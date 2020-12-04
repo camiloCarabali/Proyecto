@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de prueba automatizada #6
+'''
+
 from behave import *
 from selenium import webdriver
 import time

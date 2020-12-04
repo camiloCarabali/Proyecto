@@ -1,3 +1,9 @@
+'''
+Juan Camilo Carabali Caracas
+Alejandro Rosas Cuesta
+Creacion de modelos (Rol, Login, Usuario, Actividad) del proyecto.
+'''
+
 from django.db import models
 from django.contrib.auth.models import User
 
